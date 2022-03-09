@@ -1,6 +1,8 @@
 <template>
   <div class="home">
     <NavBar></NavBar>
+    <Main></Main>
+    <Product></Product>
      
      
 
@@ -20,11 +22,15 @@
 <script>
 // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
+import Main from "@/components/Main.vue";
+import Product from "@/sections/Products.vue"
 
 export default {
   name: "HomeView",
   components: {
-    NavBar
+    NavBar,
+    Main,
+    Product
   }
 };
 </script>
