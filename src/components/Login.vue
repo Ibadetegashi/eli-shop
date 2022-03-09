@@ -74,7 +74,7 @@
 <script>
 
 import {fb} from '../firebase'
- //import $ from 'jquery'
+ import $ from 'jquery'
 
 
 export default {
@@ -94,10 +94,10 @@ export default {
        login(){
 
           fb.auth().signInWithEmailAndPassword(this.email, this.password)
-                        // .then(() => {
-                        // $('#login').modal('hide')
-                        //   this.$router.replace('admin');  
-                        // })
+                         .then(() => {
+                         $('#login').modal('hide')
+                           this.$router.replace('admin');  
+                         })
                         .catch(function(error) {
                             // Handle Errors here.
                             var errorCode = error.code;
