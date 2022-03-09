@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "core-js": "^3.8.3",
+    "firebase": "^9.6.8",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "vue": "^2.6.14",
@@ -43,7 +44,7 @@
     },
     "rules": {
       "vue/multi-word-component-names": "off",
-      "vue/no-unused-components":"off"
+      "vue/no-unused-components": "off"
     }
   },
   "browserslist": [

@@ -1,0 +1,30 @@
+[debug] [2022-03-09T20:46:30.215Z] ----------------------------------------------------------------------
+[debug] [2022-03-09T20:46:30.217Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ibade\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-03-09T20:46:30.218Z] CLI Version:   10.2.2
+[debug] [2022-03-09T20:46:30.218Z] Platform:      win32
+[debug] [2022-03-09T20:46:30.218Z] Node Version:  v12.22.1
+[debug] [2022-03-09T20:46:30.219Z] Time:          Wed Mar 09 2022 21:46:30 GMT+0100 (Central European Standard Time)
+[debug] [2022-03-09T20:46:30.219Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-09T20:46:30.222Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-03-09T20:46:30.246Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-09T20:46:30.247Z] > authorizing via signed-in user (ig47496@ubt-uni.net)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\ibade\Documents\GitHub\eli-shop
+
+[debug] [2022-03-09T20:46:30.772Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-03-09T20:46:30.773Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-03-09T21:06:45.872Z] Error: kill ENOSYS
+    at process.kill (internal/process/per_thread.js:199:13)
+    at process.listener (C:\Users\ibade\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (events.js:314:20)
+[error] 
+[error] Error: An unexpected error has occurred.
