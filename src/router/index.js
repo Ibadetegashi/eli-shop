@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Admin from "../views/Admin.vue";
+
 
 Vue.use(VueRouter)
 
@@ -11,6 +13,11 @@ const routes = [
     component: HomeView
   },
   {
+    path: "/admin",
+    name: "admin",
+    component: Admin
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -18,6 +25,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   }
+
 ]
 
 const router = new VueRouter({
