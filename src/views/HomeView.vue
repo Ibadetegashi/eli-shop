@@ -23,6 +23,7 @@
         </div>
       </div>
     </div>
+    <login></login>
   </div>
 </template>
 
@@ -31,6 +32,8 @@
 import NavBar from "@/components/NavBar.vue";
 import Main from "@/components/Main.vue";
 import Product from "@/sections/Products.vue";
+import Login from "@/components/Login.vue";
+
 
 export default {
   name: "HomeView",
@@ -38,6 +41,7 @@ export default {
     NavBar,
     Main,
     Product,
+    Login
   },
 };
 </script>
