@@ -7,6 +7,7 @@ import 'popper.js'
 import './assets/app.scss'
 import jQuery from 'jquery';
 
+
 window.$ = window.jQuery = jQuery;
 
 
