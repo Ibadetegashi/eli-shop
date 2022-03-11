@@ -26,6 +26,7 @@
       </div>
     </div>
     <login></login>
+    <mini-cart></mini-cart>
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import Main from "@/components/Main.vue";
 import Product from "@/sections/Products.vue";
 import ProductList from "@/sections/ProductList.vue";
 import Login from "@/components/Login.vue";
+import MiniCart from '@/components/MiniCart.vue';
 
 
 export default {
@@ -45,7 +47,8 @@ export default {
     Main,
     Product,
     Login,
-    ProductList
+    ProductList,
+    MiniCart
   },
 };
 </script>
