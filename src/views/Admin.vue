@@ -102,9 +102,10 @@
 
 <script>
 // @ is an alias to /src
-
+import Main from "@/components/Main.vue";
 import {fb} from '../firebase';
 import $ from 'jquery'
+
 export default {
   name: "admin",
   data(){
@@ -114,26 +115,26 @@ export default {
       }
   },
   components: {
-  
+    Main
   },
   methods:{
       closeMenu(){
         $(".page-wrapper").toggleClass("toggled");
       },
       logout(){
-           fb.auth().signOut()
-           .then(() => {
-               this.$router.replace('/');
-           })
-           .catch((err) =>{
-               console.log(err);
-           });
+          fb.auth().signOut()
+          .then(() => {
+              this.$router.replace('/');
+          })
+          .catch((err) =>{
+              console.log(err);
+          });
       }
   },
 
   created(){
-    //   let user = fb.auth().currentUser;
-    //   this.email = user.email;
+      let user = fb.auth().currentUser;
+      this.email = user.email;
 
   }
 };

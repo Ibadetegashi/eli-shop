@@ -200,6 +200,9 @@ import {fb, db}from '../firebase';
     import Toast from "sweetalert2";
     import 'firebase/storage';
 
+import firebase from "firebase/compat/app";
+    
+
     import { VueEditor } from "vue2-editor";
 
 export default {
@@ -249,37 +252,31 @@ export default {
       this.product.tags.push(this.tag);
       this.tag = "";
     },
-    uploadImage(e){
+     uploadImage(e) {
+      if (e.target.files[0]) {
+        let file = e.target.files[0];
 
-      if(e.target.files[0]){
-        
-          let file = e.target.files[0];
-    
-          var storageRef = fb.storage().ref('products/'+ Math.random() + '_'  + file.name);
-    
-          let uploadTask  = storageRef.put(file);
-    
-          // eslint-disable-next-line no-unused-vars
-          uploadTask.on('state_changed', (snapshot) => {
-            
-          // eslint-disable-next-line no-unused-vars
-          }, (error) => {
-            // Handle unsuccessful uploads
-          }, () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            
+        var storageRef = firebase.storage().ref("products/" + file.name);
+
+        let uploadTask = storageRef.put(file);
+
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            console.log(snapshot);
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
               this.product.images.push(downloadURL);
+
+              console.log("File available at", downloadURL);
             });
-
-          });
-
+          }
+        );
       }
-
-
-
-
     },
     reset() {
       this.product = {
