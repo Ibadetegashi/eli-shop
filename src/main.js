@@ -18,7 +18,7 @@ Vue.use(VueFirestore, {
 
 Vue.use(VueFirestore) 
 
-Vue.component('NavBar', require('./components/NavBar.vue').default);
+
 Vue.component('add-to-cart', require('./components/AddToCart.vue').default);
 
 window.$ = window.jQuery = jQuery;

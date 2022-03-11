@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <NavBar></NavBar>
+   <NavBar></NavBar>
     <!-- <Main></Main> -->
     <ProductList></ProductList>
 
@@ -38,18 +38,21 @@ import Product from "@/sections/Products.vue";
 import ProductList from "@/sections/ProductList.vue";
 import Login from "@/components/Login.vue";
 import MiniCart from '@/components/MiniCart.vue';
+import NavBar from "@/components/NavBar.vue";
+
 
 
 export default {
   name: "HomeView",
   components: {
-  
     Main,
     Product,
     Login,
     ProductList,
-    MiniCart
-  },
+    MiniCart,
+    NavBar
+    
+},
 };
 </script>
 
