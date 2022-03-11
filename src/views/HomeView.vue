@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <NavBar></NavBar>
-    <Main></Main>
+    <!-- <Main></Main> -->
+    <ProductList></ProductList>
+
     <Product></Product>
 
     <div class="container h-100">
@@ -32,6 +34,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Main from "@/components/Main.vue";
 import Product from "@/sections/Products.vue";
+import ProductList from "@/sections/ProductList.vue";
 import Login from "@/components/Login.vue";
 
 
@@ -41,7 +44,8 @@ export default {
     NavBar,
     Main,
     Product,
-    Login
+    Login,
+    ProductList
   },
 };
 </script>
