@@ -193,14 +193,14 @@
 // import $ from "jquery";
 // import Swal from "sweetalert2";
 // import Toast from "sweetalert2";
-// import firebase from "firebase/compat/app";
+import firebase from "firebase/compat/app";
 import {fb, db}from '../firebase';
     import $ from 'jquery'
     import Swal from "sweetalert2";
     import Toast from "sweetalert2";
     import 'firebase/storage';
 
-import firebase from "firebase/compat/app";
+
     
 
     import { VueEditor } from "vue2-editor";
@@ -236,7 +236,7 @@ export default {
   },
   methods: {
     deleteImage(img, index) {
-      let image = fb.storage().refFromURL(img);
+      let image = firebase.storage().refFromURL(img);
 
       this.product.images.splice(index, 1);
       image
@@ -256,7 +256,7 @@ export default {
       if (e.target.files[0]) {
         let file = e.target.files[0];
 
-        var storageRef = firebase.storage().ref("products/" + file.name);
+        var storageRef = fb.storage().ref("products/" + file.name);
 
         let uploadTask = storageRef.put(file);
 
