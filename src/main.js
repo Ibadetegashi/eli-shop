@@ -8,7 +8,8 @@ import './assets/app.scss'
 import jQuery from 'jquery';
 import VueFirestore from 'vue-firestore';
 require('firebase/firestore')
-
+import Vue2Filters from 'vue2-filters'
+Vue.use(Vue2Filters)
 
 Vue.use(VueFirestore, {
   key: 'id',         // the name of the property. Default is '.key'.
@@ -17,6 +18,8 @@ Vue.use(VueFirestore, {
 
 Vue.use(VueFirestore) 
 
+Vue.component('NavBar', require('./components/NavBar.vue').default);
+Vue.component('add-to-cart', require('./components/AddToCart.vue').default);
 
 window.$ = window.jQuery = jQuery;
 

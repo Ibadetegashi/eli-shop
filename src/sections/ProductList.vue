@@ -5,28 +5,30 @@
           <div class="row">
               
               <div class="col-md-4"  v-for="(product,id) in products" :key="id">
-                  <div class="card product-item" style="min-height:500px" >
+                  <div class="card product-item" style="min-height:500px;margin-top:35px" >
 
                         <carousel :perPage="1" style="min-height:350px;max-height:350px">
                           <slide v-for="(image, index) in product.images" :key="index">
-                                <img :src="image" class="card-img-top" alt="..." width="250px">
+                                <img :src="image" class="card-img-top" alt="..." width="280px"
+                    height="300px">
                           </slide>
                         </carousel>
                 
                         <div class="card-body" >
                           <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ product.name }}</h5>
-                            <h5 class="card-priceS">{{ product.price  }}</h5>
+                            <h5 class="card-priceS">{{ product.price | currency }}</h5>
 
                           </div>
-                           
-                            <!-- <add-to-cart 
+                               <add-to-cart 
                                 :image="getImage(product.images)"
                                 :p-id="product.id"
                                 :price="product.price"
                                 :name="product.name">
-                            </add-to-cart> -->
+                            </add-to-cart> 
+                        
                         </div>
+                        
                     </div>
               </div>
 
@@ -75,5 +77,6 @@ data(){
         margin-top: 7rem;
         background: #f2f2f2;
         padding-bottom: 3rem;
+        height: fit-content;
     }
 </style>
