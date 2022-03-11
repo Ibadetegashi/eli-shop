@@ -57,7 +57,7 @@
                           {{price}}{{product.price}}
                           </td> 
                           <td>
-                            <button class="btn btn-primary">Edit</button>
+                            <button class="btn btn-primary" @click="editProduct(product)">Edit</button>
                             <button class="btn btn-danger" @click="deleteProduct(product)">Delete</button>
                           </td> 
                       </tr>
@@ -87,9 +87,8 @@
                       <input type="text" placeholder="Product Name" v-model="product.name" class="form-control">
                     </div>
 
-                    <div class="form-group">
-                      <input type="text" placeholder="Product Description" v-model="product.description" class="form-control">
-                      
+                    <div class="form-group">                   
+                       <vue-editor v-model="product.description"></vue-editor>                    
                     </div>
                   </div>
                   <!-- product sidebar -->
@@ -107,7 +106,7 @@
 
                     <div class="form-group">
                       <label for="product_image">Product Images</label>
-                      <input type="file" @change="uploadImage()" class="form-control">
+                      <input type="file" @change="uploadImage" class="form-control">
                     </div>
 
                   </div>
@@ -118,7 +117,8 @@
             </div>
                 <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button @click="addProduct()" type="button" class="btn btn-primary" >Save changes</button>
+              <button @click="addProduct()" type="button" class="btn btn-primary" v-if="modal == 'new'">Save changes</button>
+              <button @click="updateProduct()" type="button" class="btn btn-primary" v-if="modal == 'edit'">Apply changes</button>
             </div>
           </div>
         </div>
@@ -127,10 +127,16 @@
   </div>
 </template>
 <script>
-    import { fb, db}from '../firebase';
+    import {fb, db}from '../firebase';
     import $ from 'jquery'
+
+    import { VueEditor } from "vue2-editor";
+
     export default {
       name: "Products",
+      components: {
+      VueEditor
+     },
       props: {
         msg: String
       },
@@ -141,10 +147,12 @@
               name: null,
               description: null,
               price:null,
-              tag: null,
+              tags: [],
               image: null
             },
-            activeItem: null
+            activeItem: null,
+            modal: null,
+            tag: null
       }
     },
     firestore(){
@@ -153,20 +161,56 @@
       }
     },
       methods:{
-        uploadImage(){
+
+        addTag(){
+          this.products.tags.push(this.tag);
+          this.tag == "";
+        },
+        uploadImage(e){
+
+          let file = e.target.files[0]
+
+          var storageRef = fb.storage().ref('products/' + file.name);
+          let uploadTask = storageRef.put(file);
+
+          uploadTask.on('state_changed',(snapshot) => {
+
+            }, 
+            (error) => {
+              // Handle unsuccessful uploads
+              console.log(error);
+            }, 
+            () => {
+              // Handle successful uploads on complete
+              // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+              uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                this.product.image = downloadURL; 
+                console.log('File available at', downloadURL);
+              });
+            }
+);
 
         },
 
         addNew(){
+          this.modal = 'new';
           $('#product').modal('show');
         },
       
         updateProduct(){
+          this.$firestore.products.doc(this.product.id).update(this.product)
+           Toast.fire({
+                  type: 'success',
+                  title: 'Updated  successfully'
+                })
 
-        },
+                 $('#product').modal('hide');
+      },
 
         editProduct(product){
-
+          this.modal = 'edit';
+          this.product = product;
+          $('#product').modal('show');
         },
 
 
@@ -194,7 +238,14 @@
           },
 
         addProduct(){
-          this.$firestore.products.add(this.product)
+          this.$firestore.products.add(this.product);
+
+                Toast.fire({
+                  type: 'success',
+                  title: 'Product created successfully'
+                })
+
+
           $('#product').modal('hide');
         },
         readData(){

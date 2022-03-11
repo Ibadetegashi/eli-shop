@@ -6,8 +6,14 @@ import 'jquery'
 import 'popper.js'
 import './assets/app.scss'
 import jQuery from 'jquery';
-import VueFirestore from 'vue-firestore'
+import VueFirestore from 'vue-firestore';
+require('firebase/firestore')
 
+
+Vue.use(VueFirestore, {
+  key: 'id',         // the name of the property. Default is '.key'.
+  enumerable: true  //  whether it is enumerable or not. Default is true.
+})
 
 Vue.use(VueFirestore) 
 
