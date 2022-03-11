@@ -56,7 +56,7 @@
                           </div>
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-4">
                           <div class="form-group">
                             <input type="text"  v-model="profile.postCode" placeholder="Postcode" class="form-control">
                           </div>
@@ -65,6 +65,12 @@
                         <div class="col-md-4">
                           <div class="form-group">
                               <input type="submit" @click="updateProfile" value="Save Changes" class="btn btn-primary w-100">
+                          </div>
+                        </div>
+
+                         <div class="col-md-4">
+                          <div class="form-group">
+                              <input type="button" @click="resetPassword" value="Reset pasword email" class="btn btn-success w-100">
                           </div>
                         </div>
 
@@ -179,18 +185,18 @@ export default {
       }
   },
    methods:{
-  //     resetPassword(){
-  //         const auth = fb.auth();          
+      resetPassword(){
+          const auth = fb.auth();          
 
-  //         auth.sendPasswordResetEmail(auth.currentUser.email).then(() =>  {
-  //              Toast.fire({
-  //               type: 'success',
-  //               title: 'Email sent'
-  //             })
-  //         }).catch((error) =>  {
-  //             console.log(error);
-  //         });
-  //     },
+          auth.sendPasswordResetEmail(auth.currentUser.email).then(() =>  {
+              Toast.fire({
+                type: 'success',
+                title: 'Email sent'
+              })
+          }).catch((error) =>  {
+              console.log(error);
+          });
+       },
 
        updateProfile(){
           this.$firestore.profile.update(this.profile);
