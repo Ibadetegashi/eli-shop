@@ -16,7 +16,7 @@ const userController = {
     try {
       const user = await admin.auth().createUser({
         email,
-        password,
+        password, 
       });
 
       if (user.email && user.email.includes("ubt-uni.net")) {
