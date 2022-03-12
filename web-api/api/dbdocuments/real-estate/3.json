@@ -1,0 +1,7 @@
+{
+  "id": 3,
+  "type": "House",
+  "rooms": 4,
+  "squareMeters": 150,
+  "price": 175000
+}

@@ -50,7 +50,7 @@ export default {
       } catch (err) {
         this.error = err;
       }
-      this.$router.replace({ name: "Listing" });
+      this.$router.replace({ name: "admin" });
     },
   },
 };
