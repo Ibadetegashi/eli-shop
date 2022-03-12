@@ -20,6 +20,12 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile,
+    meta:{isAuthenticated:true}
+  },
 
   {
     path: "/admin",
@@ -36,12 +42,13 @@ const routes = [
           path: "products",
           name: "products",
           component: Products,
-     meta: { isAdmin: true },
+     //meta: { isAdmin: true },
         },
         {
           path: "profile",
           name: "profile",
           component: Profile
+          
         },
         {
           path: "orders",
