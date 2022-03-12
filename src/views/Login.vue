@@ -46,7 +46,8 @@ export default {
           auth,
           this.form.email,
           this.form.password
-        );
+        )
+        
       } catch (err) {
         this.error = err;
       }

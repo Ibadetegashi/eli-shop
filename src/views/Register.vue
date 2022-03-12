@@ -49,8 +49,17 @@ export default {
   methods: {
     async createUser() {
       try {
-        await apiRequest.registerUser(this.form.email, this.form.password);
-        this.$router.replace({ name: "Listing" });
+        await apiRequest.registerUser(this.form.email, this.form.password)
+        
+         .then((user) => {
+                   
+                    
+                     // eslint-disable-next-line no-undef
+                     db.collection("profiles").doc(user.user.uid).set({
+                         name: this.name
+                     })
+                     this.$router.replace({ name: "admin" })
+         })
       } catch (err) {
         this.error = err.response.data.error;
       }

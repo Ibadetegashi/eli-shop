@@ -8,7 +8,7 @@ import Orders from "../views/Orders.vue";
 import Profile from "../views/Profile.vue";
 //import { fb } from '../firebase'
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import Login from "../views/Login.vue"
+
 
 
 
@@ -20,16 +20,12 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-    {
-    path: '/login',
-    name: 'login',
-    component: Login
-  },
+
   {
     path: "/admin",
     name: "admin", 
     component: Admin,
-      meta: { isAuthenticated: true },
+      meta: { isAdmin: true },
      children:[
         {
           path: "overview",
@@ -39,7 +35,8 @@ const routes = [
         {
           path: "products",
           name: "products",
-          component: Products
+          component: Products,
+     meta: { isAdmin: true },
         },
         {
           path: "profile",
@@ -76,6 +73,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
+  },
+          {
+    path: '/login',
+    name: 'login',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
   }
 
 ]
