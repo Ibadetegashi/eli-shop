@@ -33,7 +33,7 @@
 /* eslint-disable */
 import axios from 'axios'
 import Toast from 'sweetalert2'
-import NavBar from '../components/NavBar.vue'
+import NavBar from './NavBar.vue'
 
 export default {
     name: "CreateContacts",
