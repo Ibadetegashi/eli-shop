@@ -25,8 +25,10 @@
         </div>
       </div>
     </div>
+  
     <login></login>
     <mini-cart></mini-cart>
+      <Footer></Footer>
   </div>
 </template>
 
@@ -39,6 +41,8 @@ import ProductList from "@/sections/ProductList.vue";
 import Login from "@/components/Login.vue";
 import MiniCart from '@/components/MiniCart.vue';
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
+
 
 
 
@@ -46,6 +50,7 @@ export default {
   name: "HomeView",
   components: {
     Main,
+    Footer,
     Product,
     Login,
     ProductList,
