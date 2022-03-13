@@ -68,6 +68,13 @@
                             </router-link>
                         </li>
 
+                          <li>
+                            <router-link to="admin/contacts/contactlist">
+                                <i class="fa fa-"></i>
+                                <span>Contacts</span>
+                            </router-link>
+                        </li>
+
                         <li>
                             <router-link to="/admin/profile">
                                 <i class="fa fa-user"></i>

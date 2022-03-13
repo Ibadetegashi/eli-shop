@@ -1,6 +1,6 @@
 <template>
 
-<div class="container features">
+<!-- <div class="container features">
     <div class="row">
   <h3>Contacts Listing </h3>
 </div>
@@ -28,24 +28,37 @@
 
 
     </div>
+</div> -->
+
+
+
+
+
+
+<div class="mt-2">
+<div class="container">
+    <h1>Contacts</h1>
+    <table class="table">
+        <thead>
+             <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col" >description</th>
+                <th scope="col">Delete</th>
+                </tr>
+        </thead>
+      <tbody>
+          <tr v-for="contacts in contactsfields" :key="contacts._id">
+                                <td>{{ contacts.name }}</td>
+                                <td>{{ contacts.email }}</td>
+                                
+                                <td style="text:wrap">{{ contacts.description }}</td>
+                             <td>  <button type="button" class="btn btn-danger"  @click.stop="deletecontacts(contacts._id)">Delete </button></td> 
+                            </tr>
+    </tbody>
+    </table>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 </template>
 <script>
 /* eslint-disable */
@@ -92,3 +105,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+table{
+    table-layout: fixed;
+}
+td{
+    word-wrap:break-word
+}
+</style>

@@ -1,10 +1,10 @@
 <template>
   <div class="home">
    <NavBar></NavBar>
-    <!-- <Main></Main> -->
-    <ProductList></ProductList>
+   <Main></Main> 
+  
 
-    <Product></Product>
+  
 
     <div class="container h-100">
       <div class="row p-5 h-100 justify-content-center align-items-center">
@@ -37,7 +37,7 @@
 
 import Main from "@/components/Main.vue";
 import Product from "@/sections/Products.vue";
-import ProductList from "@/sections/ProductList.vue";
+import ProductList from "@/views/ProductList.vue";
 import Login from "@/components/Login.vue";
 import MiniCart from '@/components/MiniCart.vue';
 import NavBar from "@/components/NavBar.vue";

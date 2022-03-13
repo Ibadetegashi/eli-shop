@@ -1,5 +1,6 @@
 <template>
   <div class="products" id="products">
+    <NavBar></NavBar>
       <div class="container">
           <h1 class="text-center p-5">Our Products List</h1>
           <div class="row">
@@ -40,41 +41,37 @@
 
 <script>
 import {db} from '../firebase';
+import NavBar from '@/components/NavBar.vue';
 
 
 export default {
-  name: "Products-list",
-  props: {
-    msg: String
-  },
-
-data(){
-    return {
-        products: [],
-     
-    }
-  },
-
-  methods:{
-
-    getImage(images){
-      return images[0];
-    }
-
-  },
-
-  firestore(){
-      return {
-        products: db.collection('products'),
-      }
-  },
+    name: "Products-list",
+    props: {
+        msg: String
+    },
+    data() {
+        return {
+            products: [],
+        };
+    },
+    methods: {
+        getImage(images) {
+            return images[0];
+        }
+    },
+    firestore() {
+        return {
+            products: db.collection("products"),
+        };
+    },
+    components: { NavBar }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .products{
-        margin-top: 7rem;
+       margin-top: 3rem;
         background: #f2f2f2;
         padding-bottom: 3rem;
         height: fit-content;
