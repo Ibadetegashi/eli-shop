@@ -22,6 +22,9 @@
             <li class="nav-item">
               <router-link to="/about" class="nav-link" href="#">About</router-link>
             </li>
+             <li class="nav-item">
+              <router-link to="/register" class="nav-link" href="#">Register</router-link>
+            </li>
           
           </ul>
           <form class="form-inline my-2 my-lg-0">
