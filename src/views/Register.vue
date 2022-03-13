@@ -95,12 +95,12 @@ form {
 .form {
   display: flex;
   margin-top: 150px;
-  box-shadow: 0 0 15px rgba(182, 152, 151, 0.884);
+  box-shadow: 0 0 15px rgba(240, 58, 12, 0.884);
   width: fit-content;
 }
 
 button[type="submit"] {
-  background-color: rgb(171, 150, 125);
+  background-color: darkorange;
   color: black;
   height: 30px;
   border-radius: 20px;
@@ -125,7 +125,7 @@ button[type="submit"] {
   flex-direction: column;
   justify-content: center;
   row-gap: 10px;
-  background-color: rgb(169, 132, 132);
+  background-color: black;
   padding-left: 90px;
   padding-right: 90px;
 }

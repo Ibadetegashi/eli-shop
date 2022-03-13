@@ -7,6 +7,7 @@ import Products from "../views/Products.vue";
 import Orders from "../views/Orders.vue";
 import Profile from "../views/Profile.vue";
 import Contact from "../views/Contact.vue";
+import ContactList from "../views/ContactList.vue";
 //import { fb } from '../firebase'
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
@@ -60,6 +61,11 @@ const routes = [
           path: "orders",
           name: "orders",
           component: Orders
+       },
+                {
+          path: "contacts/contactlist",
+          name: "contacts",
+          component: ContactList
         }
       ]
   },
@@ -94,7 +100,23 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
-  }
+  },
+                   {
+    path: '/ourproducts',
+    name: 'products',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProductList.vue')
+  },
+  //                 {
+  //   path: '/contacts/contactlist',
+  //   name: '/contacts/contactlist',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/ContactList.vue')
+  // }
 
 ]
 

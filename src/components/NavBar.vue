@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-   <nav class="navbar custom-nav fixed-top navbar-expand-lg navbar-light bg-light">
+   <nav class="navbar custom-nav fixed-top navbar-expand-lg navbar-light bg-light" >
      <div class="container">
         <router-link class="navbar-brand" to="/">ELI shop</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/products" class="nav-link" href="#">Products</router-link>
+              <router-link to="/ourproducts" class="nav-link" href="#">Products</router-link>
             </li>
                <li class="nav-item" >
               <router-link to="/myprofile"  class="nav-link">Profile</router-link>
