@@ -18,7 +18,7 @@
        <div style=" width: 270px;margin-left:60px" class="alert alert-primary" role="alert" v-if="this.error">
             Error ocurred: {{ this.error }}
           </div>
-                      <form @submit.prevent="createUser()" class="mx-1 mx-md-4">
+                      <form @submit.prevent="register()" class="mx-1 mx-md-4">
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -102,10 +102,11 @@
 </template>
 
 <script>
-import apiRequest from "@/utility/apiRequest";
+//import apiRequest from "@/utility/apiRequest";
 import NavBar from "@/components/NavBar.vue";
-import Toast from "sweetalert2";
-import { db } from "../firebase";
+
+import {fb, db } from "../firebase";
+import Toast from 'sweetalert2';
 
 export default {
   data() {
@@ -119,26 +120,40 @@ export default {
     };
   },
   methods: {
-    async createUser() {
-      try {
-        await apiRequest
-          .registerUser(this.form.name, this.form.email, this.form.password)
-          .then((user) => {
-            Toast.fire({
+    register(){
+            fb.auth().createUserWithEmailAndPassword(this.email, this.password)
+                 .then((user) => {
+                       Toast.fire({
               type: "success",
               title: "Registered",
             });
-            // eslint-disable-next-line no-undef
+                    
+                     // eslint-disable-next-line no-undef
+                     db.collection("profiles").doc(user.user.uid).set({
+                         name: this.name
+                     })
+                     .then(function() {
+                         console.log("Document successfully written!");
+                     })
+                     .catch(function(error) {
+                         console.error("Error writing document: ", error);
+                     });
 
-            db.collection("profiles").doc(user.uid).set({
-             // name: this.name, //qysh
+                     this.$router.replace('admin');
+                 })
+                .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode == 'auth/weak-password') {
+                    alert('The password is too weak.');
+                } else {
+                    alert(errorMessage);
+                }
+                console.log(error);
             });
-            this.$router.replace({ name: "admin" });
-          });
-      } catch (err) {
-        this.error = err.response.data.error;
       }
-    },
+
   },
   components: { NavBar },
 };
