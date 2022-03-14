@@ -50,7 +50,7 @@
 
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input type="text" v-model="profile.phone" placeholder="Phone" class="form-control">
+                            <input type="number" v-model="profile.phone" placeholder="Phone" class="form-control">
                           </div>
                         </div>
 
@@ -62,7 +62,7 @@
 
                         <div class="col-md-8">
                           <div class="form-group">
-                            <input type="text" v-model="profile.postcode" placeholder="Postcode" class="form-control">
+                            <input type="number" v-model="profile.postcode" placeholder="Postcode" class="form-control">
                           </div>
                         </div>
 
@@ -77,7 +77,7 @@
                               <input type="button" @click="resetPassword" value="Reset password email" class="btn btn-success w-100">
                           </div>
                         </div>
-  <a href="#" @click="logout()">
+                          <a href="#" @click="logout()">
                                 <i class="fa fa-power-off"></i>
                                 <span>Logout</span>
                             </a>
@@ -188,9 +188,13 @@ export default {
       //   postcode: this.profile.postcode,
       //   phone: this.profile.phone 
       // })
+      // return {
+      //   profiles: db.collection('profiles'),
+      //   profile: db.collection('profiles'),
+      // }
+       const user = fb.auth().currentUser.uid;
       return {
-        profiles: db.collection('profiles'),
-        profile: db.collection('profiles'),
+        profile: db.collection('profiles').doc(user),
       }
   },
   
@@ -215,21 +219,32 @@ export default {
         //  this.$firestore.profile.doc(this.profile).update(this.profile.id);
         
         //REMINDER nese nuk behen update krejt fields gjun error :)
-          firebase.firestore();
-          db.collection('profiles').doc(this.profile.id).set({
-            name: this.profile.name,
-            phone: this.profile.phone,
-            address: this.profile.address,
-            postcode: this.profile.postcode
-          }).then(() => {
-            console.log("document updated successfully check firestore")
-            Toast.fire({
-              icon:'success',
-              title: 'Updated successfully'
-      })
-          }).catch((err) => {
-            console.log("An error occurred while updateing", + err.message)
-          })
+      //     firebase.firestore();
+      //     db.collection('profiles').doc(this.profile.id).set({
+      //       name: this.profile.name,
+      //       phone: this.profile.phone,
+      //       address: this.profile.address,
+      //       postcode: this.profile.postcode
+      //     }).then(() => {
+      //       console.log("document updated successfully check firestore")
+      //       Toast.fire({
+      //         icon:'success',
+      //         title: 'Updated successfully'
+      // })
+      //     }).catch((err) => {
+      //       console.log("An error occurred while updateing", + err.message)
+      //     })
+          this.$firestore.profile.update(this.profile)
+          .then(() => {
+             console.log("document updated successfully check firestore")
+             Toast.fire({
+               icon:'success',
+               title: 'Updated successfully'
+       })
+           }).catch((err) => {
+             console.log("An error occurred while updateing", + err.message)
+           })
+
 
       },
        logout(){

@@ -1,156 +1,98 @@
-<!--<template>
-
-<div class="register">
-  <NavBar></NavBar>
-  <form @submit.prevent="createUser" >
-        <div class="form">
-            <img id="log-img"
-                src="https://www.joshtalks.info/assets/media/avatar.jpg"
-                alt="">
-            <div id="input">
-                <div id="h1">
-                    <h1>Register</h1>
-                </div>
-                <label for="email">Email</label>
-
-                <input placeholder=""
-              class="form-control"
-              name="email"
-              type="email"
-              v-model="form.email">
-
-                <label for="password">Password</label>
-                <input placeholder=""
-              class="form-control"
-              name="password"
-              type="password"
-              v-model="form.password">
-          <div style="color:white;width:250px" v-if="this.error">Error ocurred: {{ this.error }}</div>
-
-                <button type="submit">Register</button>
-               
-            </div>
-            
-        </div>
-    </form>
-    </div> 
-    
-</template>-->
-
-
 <template>
   <div class="register">
-  <NavBar></NavBar>
-  <form @submit.prevent="createUser" >
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-12 col-xl-11">
-        <div class="card text-black" style="border-radius: 25px;">
-          <div class="card-body p-md-5">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
-
-                <form class="mx-1 mx-md-4">
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" class="form-control" />
-                      <label class="form-label" for="form3Example1c">Your Name</label>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" class="form-control" />
-                      <label class="form-label" for="form3Example3c">Your Email</label>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" />
-                      <label class="form-label" for="form3Example4c">Password</label>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" />
-                      <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                    </div>
-                  </div>
-
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">Register</button>
-                  </div>
-
-                </form>
-
-              </div>
-              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image">
-
-              </div>
-            </div>
+    <NavBar></NavBar>
+    <form @submit.prevent="createUser">
+      <div class="form">
+        <img
+          id="log-img"
+          src="https://www.joshtalks.info/assets/media/avatar.jpg"
+          alt=""
+        />
+        <div id="input">
+          <div id="h1">
+            <h1>Register</h1>
           </div>
+          <label for="name">Name</label>
+
+          <input
+            placeholder=""
+            class="form-control"
+            name="name"
+            type="text"
+            v-model="form.name"
+          />
+          <label for="email">Email</label>
+
+          <input
+            placeholder=""
+            class="form-control"
+            name="email"
+            type="email"
+            v-model="form.email"
+          />
+
+          <label for="password">Password</label>
+          <input
+            placeholder=""
+            class="form-control"
+            name="password"
+            type="password"
+            v-model="form.password"
+          />
+          <div style="color: white; width: 250px" v-if="this.error">
+            Error ocurred: {{ this.error }}
+          </div>
+
+          <button type="submit">Register</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
-</section>
-  </form>
-  </div>
-
 </template>
 
 <script>
 import apiRequest from "@/utility/apiRequest";
 import NavBar from "@/components/NavBar.vue";
-import Toast from 'sweetalert2';
+import Toast from "sweetalert2";
+import { db } from "../firebase";
 
 export default {
-    data() {
-        return {
-            form: {
-                email: "",
-                password: "",
-            },
-            error: null,
-        };
-    },
-    methods: {
-        async createUser() {
-            try {
-                await apiRequest.registerUser(this.form.email, this.form.password)
-                    .then((user) => {
-                        Toast.fire({
-            type: "success",
-            title: "Registered",
+  data() {
+    return {
+      form: {
+        name: "",
+        email: "",
+        password: "",
+      },
+      error: null,
+    };
+  },
+  methods: {
+    async createUser() {
+      try {
+        await apiRequest
+          .registerUser(this.form.name,this.form.email, this.form.password)
+          .then((user) => {
+            Toast.fire({
+              type: "success",
+              title: "Registered",
+            });
+            // eslint-disable-next-line no-undef
+           
+            db.collection("profiles").doc(user.uid).set({
+              name: this.name //qysh
+            })
+            this.$router.replace({ name: "admin" });
           });
-                    // eslint-disable-next-line no-undef
-                    db.collection("profiles").doc(user.user.uid).set({
-                        name: this.name
-                    });
-                    this.$router.replace({ name: "admin" });
-                });
-            }
-            catch (err) {
-                this.error = err.response.data.error;
-            }
-        },
+      } catch (err) {
+        this.error = err.response.data.error;
+      }
     },
-    components: { NavBar }
+  },
+  components: { NavBar },
 };
 </script>
-<!--<style scoped>
+<style scoped>
 input {
   border: none;
   border-bottom: 5px inset rgb(221, 123, 42);
@@ -231,29 +173,4 @@ body {
 
   /* background:radial-gradient(rgba(255, 166, 0, 0.245), rgb(221, 123, 42)); */
 }
-
-</style> -->
-
-<style scoped>
-.gradient-custom-3 {
-  /* fallback for old browsers */
-  background:  rgba(135, 170, 186, 0.721);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
-}
-.gradient-custom-4 {
-  /* fallback for old browsers */
-  background: rgba(135, 170, 186, 0.721);
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
-}
-
-
 </style>

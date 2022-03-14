@@ -1,11 +1,10 @@
 <template>
   <div class="home">
    <NavBar></NavBar>
-    <product-list></product-list>
-  <!-- <Main></Main>
+<Main></Main>  
   <Icons></Icons>
- 
-    <div class="container h-100">
+  <product-list></product-list>
+    <!-- <div class="container h-100">
       <div class="row p-5 h-100 justify-content-center align-items-center">
         <div class="col-md-6">
           <img src="/img/svg/product.svg" alt="" width="400" />
@@ -19,8 +18,8 @@
 
         </div>
       </div>
-    </div>
-   -->
+    </div> -->
+  
     <login></login>
     <mini-cart></mini-cart>
       <Footer></Footer>
@@ -39,14 +38,10 @@ import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import {db} from '../firebase';
 import Icons from "@/components/Icons.vue";
-
-
-
-
-
+import Main from "@/components/Main.vue";
 
 export default {
-  name: "HomeView",
+  name: "Home",
   components: {
     Footer,
     Product,
@@ -55,7 +50,7 @@ export default {
     MiniCart,
     NavBar,
     Icons,
-  
+    Main
 },
   data() {
         return {

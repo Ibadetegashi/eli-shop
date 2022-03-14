@@ -14,7 +14,7 @@
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/ourproducts" class="nav-link" href="#">Products</router-link>
+              <router-link to="/productet" class="nav-link" href="#">Products</router-link>
             </li>
                <li class="nav-item" >
               <router-link to="/myprofile"  class="nav-link">Profile</router-link>
@@ -29,6 +29,8 @@
              <li class="nav-item">
               <router-link to="/register" class="nav-link" href="#">Register</router-link>
             </li>
+            <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login">Get Start</a>
+
           
           </ul>
           <form class="form-inline my-2 my-lg-0">
