@@ -8,6 +8,7 @@ import Orders from "../views/Orders.vue";
 import Profile from "../views/Profile.vue";
 import Contact from "../views/Contact.vue";
 import ContactList from "../views/ContactList.vue";
+
 //import { fb } from '../firebase'
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
@@ -22,6 +23,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+   
    {
     path: '/contact',
     name: 'contact',

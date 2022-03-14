@@ -95,9 +95,26 @@ export default {
             
             .then((result) => {
               //refresh on same page
-              this.$router.go({
+            Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // console.log(doc["contacts.id"]);
+          // this.$firestore.contactss.doc(doc.id).delete(this.contacts.id);
+
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+           this.$router.go({
                
               })
+        }
+      });
+
             })
             .catch(e => {
               this.errors.push(e)

@@ -21,6 +21,7 @@
             class="form-control"
             placeholder=""
             v-model="contacts.name"
+            required
           />
 
           <label for="email">Email</label>
@@ -29,6 +30,7 @@
             class="form-control"
             placeholder=""
             v-model="contacts.email"
+            required
           />
 
           <label for="txtarea">Message</label>

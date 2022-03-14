@@ -40,6 +40,7 @@
 <script>
 import apiRequest from "@/utility/apiRequest";
 import NavBar from "@/components/NavBar.vue";
+import Toast from 'sweetalert2';
 
 export default {
     data() {
@@ -56,6 +57,10 @@ export default {
             try {
                 await apiRequest.registerUser(this.form.email, this.form.password)
                     .then((user) => {
+                        Toast.fire({
+            type: "success",
+            title: "Registered",
+          });
                     // eslint-disable-next-line no-undef
                     db.collection("profiles").doc(user.user.uid).set({
                         name: this.name

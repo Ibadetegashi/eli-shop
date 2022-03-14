@@ -7,7 +7,7 @@ import cors from "cors";
 import helmet from "helmet";
 import realEstateRoute from "./api/routes/realEstateRoute";
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4002;
 
 const app = express();
 

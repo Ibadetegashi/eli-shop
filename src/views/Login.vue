@@ -42,6 +42,7 @@
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import NavBar from "@/components/NavBar.vue";
+import Toast from 'sweetalert2';
 
 export default {
   data() {
@@ -62,11 +63,17 @@ export default {
           this.form.email,
           this.form.password
         )
+          Toast.fire({
+            type: "success",
+            title: "Logged-in",
+          });
         
       } catch (err) {
         this.error = err;
       }
-      this.$router.replace({ name: "admin" });
+    
+      this.$router.replace(  "admin/products" );
+      
     },
   },
     components: { NavBar }
