@@ -1,79 +1,95 @@
 <template>
+  <div class="register">
+    <NavBar></NavBar>
+    <form @submit.prevent="createUser">
+      <div class="form">
+        <img
+          id="log-img"
+          src="https://www.joshtalks.info/assets/media/avatar.jpg"
+          alt=""
+        />
+        <div id="input">
+          <div id="h1">
+            <h1>Register</h1>
+          </div>
+          <label for="name">Name</label>
 
-<div class="register">
-  <NavBar></NavBar>
-  <form @submit.prevent="createUser" >
-        <div class="form">
-            <img id="log-img"
-                src="https://www.joshtalks.info/assets/media/avatar.jpg"
-                alt="">
-            <div id="input">
-                <div id="h1">
-                    <h1>Register</h1>
-                </div>
-                <label for="email">Email</label>
+          <input
+            placeholder=""
+            class="form-control"
+            name="name"
+            type="text"
+            v-model="form.name"
+          />
+          <label for="email">Email</label>
 
-                <input placeholder=""
-              class="form-control"
-              name="email"
-              type="email"
-              v-model="form.email">
+          <input
+            placeholder=""
+            class="form-control"
+            name="email"
+            type="email"
+            v-model="form.email"
+          />
 
-                <label for="password">Password</label>
-                <input placeholder=""
-              class="form-control"
-              name="password"
-              type="password"
-              v-model="form.password">
-          <div style="color:white;width:250px" v-if="this.error">Error ocurred: {{ this.error }}</div>
+          <label for="password">Password</label>
+          <input
+            placeholder=""
+            class="form-control"
+            name="password"
+            type="password"
+            v-model="form.password"
+          />
+          <div style="color: white; width: 250px" v-if="this.error">
+            Error ocurred: {{ this.error }}
+          </div>
 
-                <button type="submit">Register</button>
-               
-            </div>
-            
+          <button type="submit">Register</button>
         </div>
+      </div>
     </form>
-    </div>
-    
+  </div>
 </template>
 
 <script>
 import apiRequest from "@/utility/apiRequest";
 import NavBar from "@/components/NavBar.vue";
-import Toast from 'sweetalert2';
+import Toast from "sweetalert2";
+import { db } from "../firebase";
 
 export default {
-    data() {
-        return {
-            form: {
-                email: "",
-                password: "",
-            },
-            error: null,
-        };
-    },
-    methods: {
-        async createUser() {
-            try {
-                await apiRequest.registerUser(this.form.email, this.form.password)
-                    .then((user) => {
-                        Toast.fire({
-            type: "success",
-            title: "Registered",
+  data() {
+    return {
+      form: {
+        name: "",
+        email: "",
+        password: "",
+      },
+      error: null,
+    };
+  },
+  methods: {
+    async createUser() {
+      try {
+        await apiRequest
+          .registerUser(this.form.name,this.form.email, this.form.password)
+          .then((user) => {
+            Toast.fire({
+              type: "success",
+              title: "Registered",
+            });
+            // eslint-disable-next-line no-undef
+           
+            db.collection("profiles").doc(user.uid).set({
+              name: this.name //qysh
+            })
+            this.$router.replace({ name: "admin" });
           });
-                    // eslint-disable-next-line no-undef
-                    db.collection("profiles").doc(user.user.uid).set({
-                        name: this.name
-                    });
-                    this.$router.replace({ name: "admin" });
-                });
-            }
-            catch (err) {
-                this.error = err.response.data.error;
-            }
-        },
+      } catch (err) {
+        this.error = err.response.data.error;
+      }
     },
-    components: { NavBar }
+  },
+  components: { NavBar },
 };
 </script>
 <style scoped>
@@ -157,5 +173,4 @@ body {
 
   /* background:radial-gradient(rgba(255, 166, 0, 0.245), rgb(221, 123, 42)); */
 }
-
 </style>

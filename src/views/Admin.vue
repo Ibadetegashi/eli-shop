@@ -49,12 +49,12 @@
                             <span>Menu</span>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <router-link to="/admin/overview">
                                 <i class="fa fa-chart-line"></i>
                                 <span>Overview</span>
                             </router-link>
-                        </li>
+                        </li> -->
                         <li>
                             <router-link to="/admin/products">
                                 <i class="fab fa-amazon"></i>
@@ -75,12 +75,12 @@
                             </router-link>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <router-link to="/admin/profile">
                                 <i class="fa fa-user"></i>
                                 <span>Profile</span>
                             </router-link>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#" @click="logout()">
                                 <i class="fa fa-power-off"></i>
@@ -109,7 +109,7 @@
 
 <script>
 // @ is an alias to /src
-import Main from "@/components/Main.vue";
+
 import {fb} from '../firebase';
 import $ from 'jquery'
 
@@ -122,7 +122,7 @@ export default {
       }
   },
   components: {
-    Main
+    
   },
   methods:{
       closeMenu(){

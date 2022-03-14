@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '../views/Home.vue'
 import Admin from "../views/Admin.vue";
 import Overview from "../views/Overview.vue";
 import Products from "../views/Products.vue";
@@ -11,6 +11,7 @@ import ContactList from "../views/ContactList.vue";
 
 //import { fb } from '../firebase'
 import { onAuthStateChanged, getAuth } from "firebase/auth";
+import HomeView from '@/views/HomeView.vue';
 
 
 
@@ -21,13 +22,18 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
    
    {
     path: '/contact',
     name: 'contact',
     component: Contact
+  },
+      {
+    path: '/productet',
+    name: 'productet',
+    component: HomeView
   },
   {
     path: '/myprofile',

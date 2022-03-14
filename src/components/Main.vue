@@ -11,7 +11,7 @@
 
                 <div class="hero-btn mt-5">
                     <button class="btn custom-btn btn-info mr-4">Explore</button>
-                      <router-link  class="btn custom-btn btn-outline-secondary" to="/ourproducts" >Products</router-link>
+                      <router-link  class="btn custom-btn btn-outline-secondary" to="/productet" >Products</router-link>
 
                     
                 </div>

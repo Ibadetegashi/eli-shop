@@ -119,7 +119,7 @@ export default {
                     
                      // eslint-disable-next-line no-undef
                      db.collection("profiles").doc(user.user.uid).set({
-                         name: this.name
+                         name: this.name 
                      })
                      .then(function() {
                          console.log("Document successfully written!");
