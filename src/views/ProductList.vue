@@ -69,9 +69,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style scoped >
     .products{
-       margin-top: 3rem;
+       margin-top: 4rem;
         background: #f2f2f2;
         padding-bottom: 3rem;
         height: fit-content;

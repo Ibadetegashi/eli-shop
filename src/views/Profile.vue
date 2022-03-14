@@ -22,9 +22,9 @@
 
           <ul class="nav nav-pills ml-3" id="myTab" role="tablist">
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <button class="nav-link active" type="button" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"  role="tab" aria-controls="profile">Profile</button>
-            </li>
+            </li> -->
 
             <!-- <li class="nav-item">
               <button class="nav-link" type="button" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" role="tab" aria-controls="account" >Account settings</button>
@@ -44,7 +44,7 @@
                           <div class="form-group">
 
 
-                            <input type="text"  v-model="profile.name" placeholder="Full name" class="form-control">
+                            <input type="text"  v-model="profile.name" placeholder="Full Name" class="form-control" >
                           </div>
                         </div>
 
@@ -77,7 +77,10 @@
                               <input type="button" @click="resetPassword" value="Reset password email" class="btn btn-success w-100">
                           </div>
                         </div>
-
+  <a href="#" @click="logout()">
+                                <i class="fa fa-power-off"></i>
+                                <span>Logout</span>
+                            </a>
                       </div>
                   </div>
                 
@@ -144,7 +147,7 @@
 
 <script>
 
-import { db} from '../firebase';
+import { fb,db} from '../firebase';
 import firebase from 'firebase/compat/app'
 // import Swal from 'sweetalert2'
 import Toast from 'sweetalert2'
@@ -160,11 +163,11 @@ export default {
   },
   data(){
     return {
-      profiles: [],
+     profiles:[],
         profile: {
-          name:"",
-          phone:"",
-          address:"",
+          name:null,
+          phone:null,
+          address:null,
           postcode:"",
         },
         account:{
@@ -183,7 +186,7 @@ export default {
       // db.collection("profiles").doc(user.uid).update({
       //   name:this.profile.name,
       //   postcode: this.profile.postcode,
-      //   phone: this.profile.phone
+      //   phone: this.profile.phone 
       // })
       return {
         profiles: db.collection('profiles'),
@@ -228,6 +231,15 @@ export default {
             console.log("An error occurred while updateing", + err.message)
           })
 
+      },
+       logout(){
+          fb.auth().signOut()
+          .then(() => {
+              this.$router.replace('/');
+          })
+          .catch((err) =>{
+              console.log(err);
+          });
       },
       uploadImage(){
 

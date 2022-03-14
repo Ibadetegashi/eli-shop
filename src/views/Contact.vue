@@ -1,98 +1,85 @@
 <template>
-<div class="contact">
+  <div class="contact">
     <NavBar></NavBar>
-<!-- <div class="contact">
-  <NavBar></NavBar>
-  <br><br><br>
-<div class="container features">
-    <div class="row">
-  <h1>Contact</h1>
-</div>
-  <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386.4081947757478!2d21.153203574245076!3d42.647180668500276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa31dd05b21bd09de!2sUniversiteti%20p%C3%ABr%20Biznes%20dhe%20Teknologji!5e0!3m2!1sen!2s!4v1579859245620!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-    </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-12">
     <form @submit="onSubmit">
-    <div class="form-group">
-    <input type="text" class="form-control" placeholder="Name" v-model="contacts.name">
-    </div>
-    <div class="form-group">
-    <input type="email" class="form-control" placeholder="Email" v-model="contacts.email">
-    </div>
-    <div class="form-group">
-    <textarea class="form-control" rows="4" placeholder="Enter your comments about site" v-model="contacts.description"></textarea>
-    </div>
-    <input type="submit" class="btn btn-secondary btn-block" value="Send">
-    </form>
-    </div>
-    </div>
-</div>
-</div> -->
-        <form  @submit="onSubmit">
-            <div class="form">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11820.106905341989!2d20.713836435558683!3d42.21387341714951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353957030e1d667%3A0x18a2ea6d96894719!2sPremium%20Park%20Hotel!5e0!3m2!1sen!2s!4v1644579785318!5m2!1sen!2s"
-                width="380" height="530" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                <div id="input">
-                    <div id="h1">
-                        <h1>Contact Us</h1>
-                    </div>
-                    <label for="name">Full Name</label>
-                       <input type="text" class="form-control" placeholder="" v-model="contacts.name">
+      <div class="form">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11820.106905341989!2d20.713836435558683!3d42.21387341714951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353957030e1d667%3A0x18a2ea6d96894719!2sPremium%20Park%20Hotel!5e0!3m2!1sen!2s!4v1644579785318!5m2!1sen!2s"
+          width="380"
+          height="530"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+        <div id="input">
+          <div id="h1">
+            <h1>Contact Us</h1>
+          </div>
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder=""
+            v-model="contacts.name"
+          />
 
-                    <label for="email">Email</label>
-                       <input type="email" class="form-control" placeholder="" v-model="contacts.email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder=""
+            v-model="contacts.email"
+          />
 
+          <label for="txtarea">Message</label>
+          <textarea
+            class="form-control"
+            rows="4"
+            placeholder=""
+            v-model="contacts.description"
+          ></textarea>
 
-              
-
-                    <label for="txtarea">Message</label>
-                 <textarea class="form-control" rows="4" placeholder="" v-model="contacts.description"></textarea>
-
-
-                    <button type="submit">SEND</button>
-
-                </div>
-
-            </div>
-        </form>
+          <button type="submit">SEND</button>
         </div>
+      </div>
+    </form>
+    <Footer></Footer>
+  </div>
 </template>
 <script>
 /* eslint-disable */
-import axios from 'axios'
-import Toast from 'sweetalert2'
-import NavBar from '../components/NavBar.vue'
-
+import axios from "axios";
+import Toast from "sweetalert2";
+import NavBar from "../components/NavBar.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
-    name: "CreateContacts",
-    data() {
-        return {
-            contacts: {},
-        };
+  name: "CreateContacts",
+  data() {
+    return {
+      contacts: {},
+    };
+  },
+  methods: {
+    onSubmit() {
+      axios
+        .post(`http://localhost:4001/contacts`, this.contacts)
+        .then((response) => {
+          //console.log(response);
+          Toast.fire({
+            type: "success",
+            title: "Message sent",
+          });
+        });
     },
-    methods: {
-        onSubmit() {
-            axios.post(`http://localhost:4000/contacts`, this.contacts)
-                .then(response => {
-                //console.log(response);
-                Toast.fire({
-                    type: "success",
-                    title: "Message sent"
-                });
-            });
-        }
-    },
-    components: { NavBar, NavBar }
-}
+  },
+  components: { NavBar, NavBar, Footer },
+};
 </script>
 <style scoped>
 input {
   border: none;
-  border-bottom: 5px inset rgb(221, 123, 42);
+  border-bottom: 5px inset rgb(255, 255, 255);
   height: 30px;
   width: 200;
   margin-bottom: 20px;
@@ -104,14 +91,12 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  background-color: burlywood;
-  
+  background-color: rgb(255, 255, 255);
 }
 
-textarea{
+textarea {
   resize: none;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-
 }
 form {
   margin: auto;
@@ -151,12 +136,12 @@ button[type="submit"] {
   padding-right: 110px;
 }
 label {
-  color: darkorange;
+  color: rgb(35, 70, 176);
   margin-left: 5px;
 }
 
 #input button:active {
-  background-color: rgb(255, 102, 0);
+  background-color: rgb(67, 114, 171);
   transform: translateY(4px);
 }
 </style>

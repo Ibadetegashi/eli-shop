@@ -38,13 +38,13 @@
 <div class="mt-2">
 <div class="container">
     <h1>Contacts</h1>
-    <table class="table">
+    <table class="table table-striped sorting  table-hover">
         <thead>
-             <tr>
+             <tr  class="thead-dark">
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col" >description</th>
-                <th scope="col">Delete</th>
+                <th scope="col" >Description</th>
+                <th scope="col">Action</th>
                 </tr>
         </thead>
       <tbody>
@@ -71,7 +71,7 @@ export default {
       contactsfields:{}
     }
   },created () {
-    axios.get(`http://localhost:4000/contacts`)
+    axios.get(`http://localhost:4001/contacts`)
     .then(response => {
       this.contactsfields = response.data
     })
@@ -82,7 +82,7 @@ export default {
   methods: {
     onSubmit () {
       
-      axios.post(`http://localhost:4000/contacts`, this.contactspost)
+      axios.post(`http://localhost:4001/contacts`, this.contactspost)
       .then(response => {
         console.log(response);
         this.$router.go({
@@ -91,7 +91,8 @@ export default {
         })
       
     },deletecontacts (contactsid){
-            axios.delete('http://localhost:4000/contacts/' + contactsid)
+            axios.delete('http://localhost:4001/contacts/' + contactsid)
+            
             .then((result) => {
               //refresh on same page
               this.$router.go({

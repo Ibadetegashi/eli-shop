@@ -8,29 +8,29 @@
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
                 <div class="sidebar-item sidebar-brand">
-                    <a href="#">Vue Shop</a>
+                    <a href="#">Eli Shop</a>
                     <div id="close-sidebar" @click="closeMenu">
                         <i class="fas fa-times"></i>
                     </div>
                 </div>
                 <!-- sidebar-header  -->
-                <div class="sidebar-item sidebar-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="/img/user.png" alt="User picture">
+                <div class="sidebar-item sidebar-header"  >
+                    <div class="user-pic"  >
+                        <img class="img-responsive img-rounded"  src="/img/user.png" alt="User picture">
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Jhon
-                            <strong>Smith</strong>
+                        <span class="user-name">
+                            <!-- <strong>{{name}}</strong> -->
                         </span>
-                        <span class="user-role"> {{email}} </span>
+                       <strong> <span class="user-role" > {{email}} </span></strong>
                         <span class="user-status">
-                            <i class="fa fa-circle"></i>
-                            <span>Online</span>
+                            <!-- <i class="fa fa-circle"></i> -->
+                            <span></span>
                         </span>
                     </div>
                 </div>
                 <!-- sidebar-search  -->
-                <div class="sidebar-item sidebar-search">
+                <!-- <div class="sidebar-item sidebar-search">
                     <div>
                         <div class="input-group">
                             <input type="text" class="form-control search-menu" placeholder="Search...">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- sidebar-menu  -->
                 <div class=" sidebar-item sidebar-menu">
                     <ul>
@@ -61,16 +61,16 @@
                                 <span>Products</span>
                             </router-link>
                         </li>
-                        <li>
+                        <!-- <li>
                             <router-link to="/admin/orders">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Orders</span>
                             </router-link>
-                        </li>
+                        </li> -->
 
                           <li>
-                            <router-link to="admin/contacts/contactlist">
-                                <i class="fa fa-"></i>
+                            <router-link to="/admin/contacts/contactlist">
+                       <i	class="far fa-comments"></i>
                                 <span>Contacts</span>
                             </router-link>
                         </li>
@@ -142,6 +142,8 @@ export default {
   created(){
       let user = fb.auth().currentUser;
       this.email = user.email;
+      this.name = user.displayName;
+    
 
   }
 };

@@ -78,7 +78,7 @@ input {
   height: 30px;
   width: 200;
   margin-bottom: 20px;
-  border-radius: 20px;
+  border-radius: 0px;
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }

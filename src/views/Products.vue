@@ -16,7 +16,7 @@
 
       <hr />
       <div class="product-test">
-        <h3 class="d-inline-block">Products list</h3>
+        <h3 class="d-inline-block">Products List</h3>
         <button
           @click="addNew()"
           class="btn btn-primary float-right"
@@ -26,12 +26,12 @@
         </button>
 
         <div class="table-responsive">
-          <table class="table">
+          <table  class="table table-striped sorting  table-hover">
             <thead>
-              <tr>
+              <tr class="thead-dark">
                 <th>Name</th>
                 <th>Price</th>
-                <th>Modify</th>
+                <th>Actions</th>
               </tr>
             </thead>
 
@@ -45,9 +45,9 @@
                 </td>
 
                 <td>
-                  <button class="btn btn-primary" @click="editProduct(product)">
+                  <button class="btn btn-secondary" @click="editProduct(product)">
                     Edit
-                  </button>
+                  </button> |
                   <button
                     class="btn btn-danger"
                     @click="deleteProduct(product)"

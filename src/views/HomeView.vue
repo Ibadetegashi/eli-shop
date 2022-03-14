@@ -2,10 +2,7 @@
   <div class="home">
    <NavBar></NavBar>
    <Main></Main> 
-  
-
-  
-
+  <Icons></Icons>
     <div class="container h-100">
       <div class="row p-5 h-100 justify-content-center align-items-center">
         <div class="col-md-6">
@@ -13,15 +10,11 @@
         </div>
         <div class="col-md-6">
           <h3>Learn More About us</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-            quaerat voluptate iusto? Nihil voluptas vitae veritatis magnam
-            reprehenderit, reiciendis ex? Libero quasi natus veniam voluptatum,
-            voluptas exercitationem ratione consectetur et!
-          </p>
-          <button class="btn custom-btn btn-outline-primary mr-4">
-            Browse Products
-          </button>
+                     <p  v-for="(about,id) in about" :key="id">{{about.p2}}</p>
+
+         
+                      <router-link  class="btn custom-btn btn-outline-primary" to="/ourproducts" >More</router-link>
+
         </div>
       </div>
     </div>
@@ -42,6 +35,9 @@ import Login from "@/components/Login.vue";
 import MiniCart from '@/components/MiniCart.vue';
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
+import {db} from '../firebase';
+import Icons from "@/components/Icons.vue";
+
 
 
 
@@ -55,9 +51,20 @@ export default {
     Login,
     ProductList,
     MiniCart,
-    NavBar
-    
+    NavBar,
+    Icons
 },
+  data() {
+        return {
+            about: [],
+        };
+    },
+  
+    firestore() {
+        return {
+            about: db.collection("about"),
+        };
+    },
 };
 </script>
 

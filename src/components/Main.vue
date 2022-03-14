@@ -5,14 +5,15 @@
             <div class="col-md-5">
               <div class="hero-content">
                 <h1 class="hero-title">
-                  Vue Shop For Developers
+                  Eli Shop 
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos numquam tempora, iure delectus totam minus quam aperiam ratione dolores magni voluptates ut necessitatibus odio ipsum fuga, voluptas ab praesentium nihil?
-                </p>
+                     <p  v-for="(about,id) in about" :key="id">{{about.p}}</p>
+
                 <div class="hero-btn mt-5">
                     <button class="btn custom-btn btn-info mr-4">Explore</button>
-                    <button class="btn custom-btn btn-outline-secondary">Products</button>
+                      <router-link  class="btn custom-btn btn-outline-secondary" to="/ourproducts" >Products</router-link>
+
+                    
                 </div>
               </div>
             </div>
@@ -23,15 +24,34 @@
             </div>
           </div>
         </div>
+       
     </div>
+    
 </template>
 
+
 <script>
+import {db} from '../firebase';
+import NavBar from '@/components/NavBar.vue';
+
+
 export default {
-  name: "Main",
-  props: {
-    msg: String
-  }
+    name: "Main",
+    props: {
+        msg: String
+    },
+    data() {
+        return {
+            about: [],
+        };
+    },
+  
+    firestore() {
+        return {
+            about: db.collection("about"),
+        };
+    },
+    components: { NavBar}
 };
 </script>
 
@@ -40,7 +60,7 @@ export default {
   .hero{
     padding-top: 7rem;
     width: 100%;
-    height: 500px;
+    height: 700px;
     text-align: left;
   }
 

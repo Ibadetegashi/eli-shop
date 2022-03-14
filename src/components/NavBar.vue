@@ -1,8 +1,9 @@
 <template>
   <div class="hello">
-   <nav class="navbar custom-nav fixed-top navbar-expand-lg navbar-light bg-light" >
+
+   <nav class="navbar custom-nav fixed-top navbar-expand-lg bg-light" >
      <div class="container">
-        <router-link class="navbar-brand" to="/">ELI shop</router-link>
+        <router-link class="navbar-brand" to="/" style="font:bolder">ELI shop</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +32,10 @@
           
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login">Login</a>
+            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+         
+              <router-link to="/login" class="btn btn-outline-success my-2 my-sm-0">Login</router-link>
+
             <a class="btn btn-outline-info border-0 mx-2 my-2 my-sm-0" data-toggle="modal" data-target="#miniCart">
               <i class="fas fa-cart-plus"></i>
             </a>
@@ -76,9 +79,11 @@ export default {
     .navbar.custom-nav{
       padding-top:16px;
       padding-bottom:16px;
-      background-color: #fff !important;
+      background-color: rgba(255, 255, 255, 0.721);;
     }
-
+nav a.router-link-exact-active {
+    color: #3685ac;
+}
    }
 
 </style>

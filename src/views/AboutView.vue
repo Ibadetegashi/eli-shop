@@ -1,5 +1,7 @@
 <template>
-   <div class="view-container">
+<div>
+  <NavBar></NavBar>
+   <div style="margin-top:5em" class="view-container">
    <section class="nav">
     <div class="nav-logo">
       <img height="200px" src="../assets/2.jpg" alt="logo">
@@ -19,40 +21,26 @@
         <h2>ELI SHOP</h2>
       </div>
     </div>
-    <div class="card-content">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius consequatur, libero, natus, autem hic saepe exercitationem expedita alias corporis quisquam reiciendis ab quaerat rerum itaque animi repudiandae dolor in fugit ratione inventore molestiae harum accusantium dignissimos. Id praesentium quisquam asperiores ullam quaerat totam, voluptates esse vero repellendus amet, officiis inventore.</p>
+    <div class="card-content" >
+     
       <table style="width:100%">
+        <thead>
         <tr>
           <th>Requirement</th>
           <th>Solution</th> 
         </tr>
-        <tr>
-          <td>Design</td>
-          <td>PhotoShop, Figma, Canva, Adobe XD</td> 
-        </tr>
-        <tr>
-          <td>Front-end</td>
-          <td>React.js, Vue.js, Nuxt.js, HTML, CSS, JavaScript</td> 
-        </tr>
-        <tr>
-          <td>Back-end</td>
-          <td>Node.js, Express.js, Mongo, GraphQL</td> 
-        </tr>
-        <tr>
-          <td>ML</td>
-          <td>ML5, TensorFlow, Algorithm Design</td> 
-        </tr>
-        <tr>
-          <td>Shop</td>
-          <td>Stripe, PayFast, E-commerce, CMS</td> 
+        </thead>
+     
+        <tr v-for="(about,id) in about" :key="id">
+          <td>{{about.title}}</td>
+          <td>{{about.content}}</td> 
         </tr>
       </table>
-       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius consequatur, libero, natus, autem hic saepe exercitationem expedita alias corporis quisquam reiciendis ab quaerat rerum itaque animi repudiandae dolor in fugit ratione inventore molestiae harum accusantium dignissimos. Id praesentium quisquam asperiores ullam quaerat totam, voluptates esse vero repellendus amet, officiis inventore.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius consequatur, libero, natus, autem hic saepe exercitationem expedita alias corporis quisquam reiciendis ab quaerat rerum itaque animi repudiandae dolor in fugit ratione inventore molestiae harum accusantium dignissimos. Id praesentium quisquam asperiores ullam quaerat totam, voluptates esse vero repellendus amet, officiis inventore.</p>
+      </div>
+      <p v-for="(about,id) in about" :key="id">{{about.p}}</p>
     </div>
   </div>
   </div>
-  
 </template>
 
 
@@ -60,18 +48,40 @@
 
 
 <script>
+import {db} from '../firebase';
+import NavBar from '@/components/NavBar.vue';
+
 
 export default {
-}
+    name: "About-Page",
+    props: {
+        msg: String
+    },
+    data() {
+        return {
+            about: [],
+        };
+    },
+  
+    firestore() {
+        return {
+            about: db.collection("about"),
+        };
+    },
+    components: { NavBar}
+};
 </script>
 
 <style lang="sass" scoped>
+
 .view-container
-  width: 79vw
-  padding: 1.5em
-  margin-left: 20vw
-  box-sizing: border-box
-  min-height: 100vh
+  width: 79vw;
+  padding: 1.5em;
+  margin-left: 20vw;
+  box-sizing: border-box;
+  min-height: 100vh;
+  
+
 .nav
   position: fixed
   display: flex
@@ -142,4 +152,11 @@ table
     padding: 1em
   .card-title h2
     font-size: 1.3em
+
+    table
+    table-layout: fixed;
+
+td
+    word-wrap:break-word
+
 </style>

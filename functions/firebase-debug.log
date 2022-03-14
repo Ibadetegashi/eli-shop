@@ -1,0 +1,63 @@
+[debug] [2022-03-13T22:54:41.952Z] ----------------------------------------------------------------------
+[debug] [2022-03-13T22:54:41.955Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ibade\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js functions:shell
+[debug] [2022-03-13T22:54:41.955Z] CLI Version:   10.2.2
+[debug] [2022-03-13T22:54:41.955Z] Platform:      win32
+[debug] [2022-03-13T22:54:41.955Z] Node Version:  v12.22.1
+[debug] [2022-03-13T22:54:41.956Z] Time:          Sun Mar 13 2022 23:54:41 GMT+0100 (Central European Standard Time)
+[debug] [2022-03-13T22:54:41.956Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-13T22:54:41.959Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-03-13T22:54:42.039Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-13T22:54:42.039Z] > authorizing via signed-in user (ig47496@ubt-uni.net)
+[debug] [2022-03-13T22:54:42.039Z] [iam] checking project eli-shop for permissions ["firebase.projects.get"]
+[debug] [2022-03-13T22:54:42.040Z] > refreshing access token with scopes: []
+[debug] [2022-03-13T22:54:42.041Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-13T22:54:42.314Z] <<< HTTP RESPONSE 200 {"date":"Sun, 13 Mar 2022 22:54:39 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-13T22:54:42.325Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/eli-shop:testIamPermissions [none]
+[debug] [2022-03-13T22:54:42.325Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/eli-shop:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-03-13T22:54:42.581Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-03-13T22:54:42.581Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-03-13T22:54:43.351Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/eli-shop:testIamPermissions 200
+[debug] [2022-03-13T22:54:43.351Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/eli-shop:testIamPermissions {"permissions":["firebase.projects.get"]}
+[warn] !  Your requested "node" version "16" doesn't match your global version "12". Using node@12 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"16\" doesn't match your global version \"12\". Using node@12 from host."}}
+[debug] [2022-03-13T22:54:43.361Z] defaultcredentials: writing to file C:\Users\ibade\AppData\Roaming\firebase\ig47496_ubt-uni_net_application_default_credentials.json
+[debug] [2022-03-13T22:54:43.363Z] DEBUG: Setting GAC to C:\Users\ibade\AppData\Roaming\firebase\ig47496_ubt-uni_net_application_default_credentials.json
+[debug] [2022-03-13T22:54:43.363Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/eli-shop/adminSdkConfig [none]
+[debug] [2022-03-13T22:54:43.893Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/eli-shop/adminSdkConfig 200
+[debug] [2022-03-13T22:54:43.894Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/eli-shop/adminSdkConfig {"projectId":"eli-shop","storageBucket":"eli-shop.appspot.com","locationId":"europe-west6"}
+[debug] [2022-03-13T22:54:43.906Z] [functions] Watching "C:\Users\ibade\Documents\GitHub\eli-shop\functions" for Cloud Functions...
+[debug] [2022-03-13T22:54:43.910Z] Validating nodejs source
+[debug] [2022-03-13T22:54:46.431Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "serve-all": "firebase emulators:start ",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.1",
+    "stripe": "^7.5.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-03-13T22:54:46.431Z] Building nodejs source
+[debug] [2022-03-13T22:54:46.431Z] Analyzing nodejs backend spec
+[debug] [2022-03-13T22:54:46.685Z] addAuthTrigger {"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/eli-shop"}}
+[debug] [2022-03-13T22:54:46.686Z] [functions[us-central1-addUserRole]] auth function initialized.
+[info] i  functions: Loaded functions: addUserRole 
+[warn] !  functions: The following emulators are not running, calls to these services will affect production: firestore, database, pubsub, storage 
