@@ -1,6 +1,6 @@
 <template>
 <div>
-  <NavBar></NavBar>
+ <nav-bar></nav-bar>
    <div style="margin-top:5em" class="view-container">
    <section class="nav">
     <div class="nav-logo">

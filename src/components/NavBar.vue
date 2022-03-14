@@ -3,7 +3,7 @@
 
    <nav class="navbar custom-nav fixed-top navbar-expand-lg bg-light" >
      <div class="container">
-        <router-link class="navbar-brand" to="/" style="font:bolder">ELI shop</router-link>
+        <router-link class="navbar-brand" to="/regiister" style="font:bolder">ELI shop</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +29,7 @@
              <li class="nav-item">
               <router-link to="/register" class="nav-link" href="#">Register</router-link>
             </li>
-            <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login">Get Start</a>
+            <!-- <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login">Get Start</a> -->
 
           
           </ul>
@@ -84,7 +84,7 @@ export default {
       background-color: rgba(255, 255, 255, 0.721);;
     }
 nav a.router-link-exact-active {
-    color: #3685ac;
+    color: #0e80b9;
 }
    }
 

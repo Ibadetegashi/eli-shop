@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-   <nav-bar></nav-bar>
+    <NavBar></NavBar>
     <form>
       <section class="vh-150" style="background-color: #eee;margin-top:5em;padding-bottom:5em">
         <div class="container h-100">

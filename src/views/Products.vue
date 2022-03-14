@@ -187,12 +187,6 @@
 </template>
 
 <script>
-// import { VueEditor } from "vue2-editor";
-// import { db } from "../firebase";
-// require("firebase/compat/firestore");
-// import $ from "jquery";
-// import Swal from "sweetalert2";
-// import Toast from "sweetalert2";
 import firebase from "firebase/compat/app";
 import {fb, db}from '../firebase';
     import $ from 'jquery'

@@ -3,8 +3,8 @@
    <NavBar></NavBar>
 <Main></Main>  
   <Icons></Icons>
-  <product-list></product-list>
-    <!-- <div class="container h-100">
+  <!--  <product-list></product-list> -->
+     <div class="container h-100">
       <div class="row p-5 h-100 justify-content-center align-items-center">
         <div class="col-md-6">
           <img src="/img/svg/product.svg" alt="" width="400" />

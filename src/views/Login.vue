@@ -2,40 +2,56 @@
 <template>
 
 <div class="login">
-  <NavBar></NavBar>
-  <form @submit.prevent="loginUser" >
-        <div class="form">
-            <img id="log-img"
-                src="https://www.joshtalks.info/assets/media/avatar.jpg"
-                alt="">
-            <div id="input">
-                <div id="h1">
-                    <h1>Login</h1>
-                </div>
-                <label for="email">Email</label>
-
-                <input
+ <nav-bar></nav-bar>
+    <section class="vh-150" style="margin-top:5em;padding-bottom:5em">
+  <div class="container py-5 h-100">
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+            Log in
+      </p>
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+           <div style=" width: 310px;margin-left:60px" class="alert alert-primary" role="alert" v-if="this.error">
+            Error ocurred: {{ this.error }}
+          </div>
+        <form @submit.prevent="loginUser" >
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+             <input
               class="form-control"
               type="email"
               v-model="form.email"
               placeholder=""
+              required
             />
-                <label for="password">Password</label>
-              <input
+            <label class="form-label" for="email">Email address</label> 
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input
               class="form-control"
               type="password"
               v-model="form.password"
               placeholder=""
+              required
             />
-          <div style="color:white;width:250px" v-if="this.error">Error ocurred: {{ this.error }}</div>
+            <label class="form-label" for="password">Password</label>
+          </div>
 
-                <button type="submit">Login</button>
-               
-            </div>
-            
-        </div>
-    </form>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
+
+        </form>
+      </div>
     </div>
+  </div>
+</section>
+    </div>
+
     
 </template>
 
@@ -81,84 +97,11 @@ export default {
 };
 </script>
 <style scoped>
-input {
-  border: none;
-  border-bottom: 5px inset rgb(221, 123, 42);
-  height: 30px;
-  width: 200;
-  margin-bottom: 20px;
-  border-radius: 0;
-  text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  background-color: burlywood;
-}
-form {
-  margin: auto;
-  width: fit-content;
-}
-.form {
-  display: flex;
-  margin-top: 150px;
-  box-shadow: 0 0 15px rgba(240, 58, 12, 0.884);
-  width: fit-content;
-}
-
-button[type="submit"] {
-  background-color: darkorange;
-  color: black;
-  height: 30px;
-  border-radius: 20px;
-  font-weight: bold;
-  border: none;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-#here {
-  text-align: center;
-  color: white;
-  cursor: pointer;
-}
-#h1 {
-  color: white;
-  text-align: center;
-  padding-bottom: 15px;
-}
-#input {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: 10px;
-  background-color: black;
-  padding-left: 90px;
-  padding-right: 90px;
-}
-label {
-  color: darkorange;
-  margin-left: 5px;
-}
-
-#log-img {
-  height: 500px;
-  width: 350px;
-  margin: 0;
-}
-#input button:active {
-  background-color: rgb(255, 102, 0);
-  transform: translateY(4px);
-}
-
-body {
-  min-height: 800px;
-  margin: 0;
-  background-color: rgb(171, 136, 136);
-  font-family: Georgia, "Times New Roman", Times, serif;
-
-  /* background:radial-gradient(rgba(255, 166, 0, 0.245), rgb(221, 123, 42)); */
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
 }
 </style>

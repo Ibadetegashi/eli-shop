@@ -1,62 +1,13 @@
 <template>
-  <!-- <div class="contact">
-    <NavBar></NavBar>
-    <form @submit="onSubmit">
-      <div class="form">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11820.106905341989!2d20.713836435558683!3d42.21387341714951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353957030e1d667%3A0x18a2ea6d96894719!2sPremium%20Park%20Hotel!5e0!3m2!1sen!2s!4v1644579785318!5m2!1sen!2s"
-          width="380"
-          height="530"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-        ></iframe>
-        <div id="input">
-          <div id="h1">
-            <h1>Contact Us</h1>
-          </div>
-          <label for="name">Full Name</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder=""
-            v-model="contacts.name"
-            required
-          />
-
-          <label for="email">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            placeholder=""
-            v-model="contacts.email"
-            required
-          />
-
-          <label for="txtarea">Message</label>
-          <textarea
-            class="form-control"
-            rows="4"
-            placeholder=""
-            v-model="contacts.description"
-          ></textarea>
-
-          <button type="submit">SEND</button>
-        </div>
-      </div>
-    </form>
-    <Footer></Footer>
-  </div> -->
-
 <div class="contact">
     <NavBar></NavBar>
     <form >
-<section class="vh-100" style="background-color: #eee;">
+<section class="vh-150" style="background-color: #eee;margin-top:5em;padding-bottom:5em">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">
-        <div class="card text-black" style="border-radius: 25px;">
-          <div class="card-body p-md-5">
+        <div class="card text-black" style="border-radius: 25px;margin-top:3em">
+          <div class="card-body p-md-5" >
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
