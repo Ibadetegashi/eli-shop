@@ -7,6 +7,8 @@
 require('firebase/compat/auth');
 require('firebase/compat/firestore');
 require ('firebase/compat/storage');
+//import { getAuth, onAuthStateChanged } from "firebase/auth";
+import store from "./store";
  
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -26,4 +28,16 @@ const firebaseConfig = {
 
  const db = firebase.firestore();
 
- export {fb,db}
+export { fb, db }
+
+//  onAuthStateChanged(getAuth(), async (user) => {
+//   const tokenResult = user
+//     ? await getAuth().currentUser.getIdTokenResult()
+//     : { claims: null };
+
+//   store.dispatch("fetchUser", { user, claims: tokenResult.claims });
+// });
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("fetchUser", user);
+});
+

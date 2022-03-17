@@ -1,7 +1,7 @@
 <template>
   <div class="register">
-   <nav-bar></nav-bar>
-    <form>
+
+    <div>
       <section class="vh-150" style="background-color: #eee;margin-top:5em;padding-bottom:5em">
         <div class="container h-100">
           <div
@@ -13,12 +13,12 @@
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                        Register
+                        Admin Registration
                       </p>
        <div style=" width: 270px;margin-left:60px" class="alert alert-primary" role="alert" v-if="this.error">
             Error ocurred: {{ this.error }}
           </div>
-                      <form @submit.prevent="createUser()" class="mx-1 mx-md-4">
+                      <div  class="mx-1 mx-md-4">
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -27,7 +27,7 @@
                               class="form-control"
                               name="name"
                               type="text"
-                              v-model="form.name"
+                              v-model="name"
                             />
                             <label class="form-label" for="name"
                               >Your Name</label
@@ -43,7 +43,7 @@
                               class="form-control"
                               name="email"
                               type="email"
-                              v-model="form.email"
+                              v-model="email"
                               required
                             />
 
@@ -61,7 +61,7 @@
                               class="form-control"
                               name="password"
                               type="password"
-                              v-model="form.password"
+                              v-model="password"
                               required
                             />
                             <label class="form-label" for="password"
@@ -74,12 +74,12 @@
                         <div
                           class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                         >
-                          <button type="submit" class="btn btn-primary btn-lg">
+                          <button @click="createUser()" class="btn btn-primary btn-lg">
                             Register
                           </button>
                         </div>
                            
-                      </form>
+                      </div>
                     </div>
                     <div
                       class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
@@ -97,7 +97,7 @@
           </div>
         </div>
       </section>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -109,12 +109,11 @@ import { db } from "../firebase";
 
 export default {
   data() {
-    return {
-      form: {
+    return {    
         name: "",
         email: "",
         password: "",
-      },
+      
       error: null,
     };
   },
@@ -122,17 +121,18 @@ export default {
     async createUser() {
       try {
         await apiRequest
-          .registerUser(this.form.name, this.form.email, this.form.password)
+          .registerUser(this.name, this.email, this.password)
           .then((user) => {
+           
             Toast.fire({
               type: "success",
               title: "Registered",
             });
             // eslint-disable-next-line no-undef
-
-            db.collection("profiles").doc(user.uid).set({
-             // name: this.name, //qysh
-            });
+   db.collection("profiles").doc(user.user.uid).set({
+              name: this.name //qysh
+            })
+          
             this.$router.replace({ name: "admin" });
           });
       } catch (err) {

@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <NavBar></NavBar>
-    <form>
+    <div>
       <section class="vh-150" style="background-color: #eee;margin-top:5em;padding-bottom:5em">
         <div class="container h-100">
           <div
@@ -18,7 +18,7 @@
        <div style=" width: 270px;margin-left:60px" class="alert alert-primary" role="alert" v-if="this.error">
             Error ocurred: {{ this.error }}
           </div>
-                      <form @submit.prevent="register()" class="mx-1 mx-md-4">
+                      <div class="mx-1 mx-md-4">
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -27,7 +27,7 @@
                               class="form-control"
                               name="name"
                               type="text"
-                              v-model="form.name"
+                              v-model="name"
                             />
                             <label class="form-label" for="name"
                               >Your Name</label
@@ -43,7 +43,7 @@
                               class="form-control"
                               name="email"
                               type="email"
-                              v-model="form.email"
+                              v-model="email"
                               required
                             />
 
@@ -61,7 +61,7 @@
                               class="form-control"
                               name="password"
                               type="password"
-                              v-model="form.password"
+                              v-model="password"
                               required
                             />
                             <label class="form-label" for="password"
@@ -74,12 +74,12 @@
                         <div
                           class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                         >
-                          <button type="submit" class="btn btn-primary btn-lg">
+                          <button  @click="register" class="btn btn-primary btn-lg">
                             Register
                           </button>
                         </div>
                            
-                      </form>
+                      </div>
                     </div>
                     <div
                       class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
@@ -97,50 +97,50 @@
           </div>
         </div>
       </section>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
 //import apiRequest from "@/utility/apiRequest";
 import NavBar from "@/components/NavBar.vue";
-
+import $ from 'jquery'
 import {fb, db } from "../firebase";
 import Toast from 'sweetalert2';
 
 export default {
   data() {
     return {
-      form: {
         name: "",
         email: "",
         password: "",
-      },
+      
       error: null,
     };
   },
   methods: {
-    register(){
+         register(){
             fb.auth().createUserWithEmailAndPassword(this.email, this.password)
-                 .then((user) => {
-                       Toast.fire({
+                .then((user) => {
+                    $('#login').modal('hide')
+                       
+            Toast.fire({
               type: "success",
               title: "Registered",
             });
                     
-                     // eslint-disable-next-line no-undef
-                     db.collection("profiles").doc(user.user.uid).set({
-                         name: this.name
-                     })
-                     .then(function() {
-                         console.log("Document successfully written!");
-                     })
-                     .catch(function(error) {
-                         console.error("Error writing document: ", error);
-                     });
+                    db.collection("profiles").doc(user.user.uid).set({
+                        name: this.name
+                    })
+                    .then(function() {
+                        console.log("Document successfully written!");
+                    })
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
+                    });
 
-                     this.$router.replace('admin');
-                 })
+                    this.$router.replace('admin');
+                })
                 .catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;

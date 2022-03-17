@@ -10,3 +10,5 @@ const registerUser = async (name,email, password) => {
   return respons.data
 }
 export default registerUser;
+
+

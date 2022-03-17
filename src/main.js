@@ -11,6 +11,7 @@ require('firebase/firestore')
 import Vue2Filters from 'vue2-filters'
 Vue.use(Vue2Filters)
 
+
 Vue.use(VueFirestore, {
   key: 'id',         // the name of the property. Default is '.key'.
   enumerable: true  //  whether it is enumerable or not. Default is true.

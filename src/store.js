@@ -8,7 +8,11 @@ let cart = window.localStorage.getItem('cart');
 
 export default new Vuex.Store({
     state: {
-      cart: cart ? JSON.parse(cart) : [],
+    cart: cart ? JSON.parse(cart) : [],
+       user: {
+      loggedIn: false,
+      data: null
+    }
     },
 
     getters: {
@@ -19,7 +23,10 @@ export default new Vuex.Store({
         });
 
         return total;
-      }
+      },
+        user(state){
+      return state.user
+    }
     },
 
     mutations:{
@@ -51,11 +58,27 @@ export default new Vuex.Store({
         this.commit('saveData');
 
       },
-
-
-      
-
-
+       SET_LOGGED_IN(state, value) {
+      state.user.loggedIn = value;
+    },
+    SET_USER(state, data) {
+      state.user.data = data;
     }
+
+
+  },
+     actions: {
+    fetchUser({ commit }, user) {
+      commit("SET_LOGGED_IN", user !== null);
+      if (user) {
+        commit("SET_USER", {
+         displayName: user.displayName,
+          email: user.email
+        });
+      } else {
+        commit("SET_USER", null);
+      }
+    }
+  }
     
   })

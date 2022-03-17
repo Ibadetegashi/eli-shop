@@ -1,24 +1,23 @@
 <template>
   <div class="home">
-   <NavBar></NavBar>
+   <nav-bar></nav-bar>
 <Main></Main>  
   <Icons></Icons>
   <!--  <product-list></product-list> -->
      <div class="container h-100">
       <div class="row p-5 h-100 justify-content-center align-items-center">
         <div class="col-md-6">
-          <img src="/img/svg/product.svg" alt="" width="400" />
+          <img src="/img/svg/product.svg" alt="" width="350" />
         </div>
         <div class="col-md-6">
           <h3>Learn More About us</h3>
                      <p  v-for="(about,id) in about" :key="id">{{about.p2}}</p>
 
-         
                       <router-link  class="btn custom-btn btn-outline-primary" to="/about" >More</router-link>
 
         </div>
       </div>
-    </div> -->
+    </div> 
   
     <login></login>
     <mini-cart></mini-cart>

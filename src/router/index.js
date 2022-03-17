@@ -8,6 +8,7 @@ import Orders from "../views/Orders.vue";
 import Profile from "../views/Profile.vue";
 import Contact from "../views/Contact.vue";
 import ContactList from "../views/ContactList.vue";
+import Register from "../views/Register.vue";
 
 //import { fb } from '../firebase'
 import { onAuthStateChanged, getAuth } from "firebase/auth";
@@ -60,9 +61,9 @@ const routes = [
      //meta: { isAdmin: true },
         },
         {
-          path: "profile",
-          name: "profile",
-          component: Profile
+          path: "register",
+          name: "register",
+          component: Register
           
         },
         {
@@ -93,14 +94,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Checkout.vue')
   },
-      {
-    path: '/register',
-    name: 'register',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
-  },
+  //     {
+  //   path: '/register',
+  //   name: 'register',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
+  // },
   {
     path: '/regiister',
     name: 'regiister',

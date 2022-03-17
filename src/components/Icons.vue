@@ -1,4 +1,5 @@
 <template>
+
 <div class="content">
      <div class="icons">
             <div class="icona1 ">
@@ -18,23 +19,27 @@
             </div>
         </div>
         </div>
+
+
 </template>
 <style scoped>
 .icons {
   display: flex;
-  justify-content: space-around;
+  justify-content:space-around;
+
   padding: 50px 0;
   flex-wrap: wrap;
   /* background: linear-gradient(
     rgba(240, 235, 231, 0.884),
     rgba(253, 249, 247, 0.884)
   ); */
-  background-color: rgba(135, 170, 186, 0.721);
-
-  
 }
 
+.content{
+  width: 100%;
+   background-color: rgba(135, 170, 186, 0.721);
 
+}
 .fa,
 .fas {
   font-size: 50px;
@@ -63,4 +68,5 @@
   margin: 0;
   color: rgb(255, 255, 255);
 }
+
 </style>

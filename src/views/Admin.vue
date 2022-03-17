@@ -29,6 +29,17 @@
                         </span>
                     </div>
                 </div>
+                   
+                               <div class="form-group">
+                              <input type="button" @click="resetPassword" value="Reset password email" class="btn btn-success w-70">
+                          </div>
+                                          
+                                                    <div class="form-group">
+                              <router-link class="btn btn-primary w-70" style="color:white"  to="/admin/register" 
+          >Add new Admin</router-link
+        >
+                          </div>
+                                  
                 <!-- sidebar-search  -->
                 <!-- <div class="sidebar-item sidebar-search">
                     <div>
@@ -87,6 +98,13 @@
                                 <span>Logout</span>
                             </a>
                         </li>
+                                                <li>
+                            <router-link to="/" href="#">
+                                <i class="fa fa-home"></i>
+                                <span>Home</span>
+                            </router-link>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -112,6 +130,7 @@
 
 import {fb} from '../firebase';
 import $ from 'jquery'
+import Toast from 'sweetalert2'
 
 export default {
   name: "admin",
@@ -136,8 +155,23 @@ export default {
           .catch((err) =>{
               console.log(err);
           });
-      }
+      },
+       resetPassword(){
+                   
+
+          const auth = fb.auth();          
+          auth.sendPasswordResetEmail(auth.currentUser.email).then(() =>  {
+            
+               Toast.fire({
+                type: 'success',
+                title: 'Email sent'
+              })
+          }).catch((error) =>  {
+              console.log(error);
+          });
+      },
   },
+  
 
   created(){
       let user = fb.auth().currentUser;

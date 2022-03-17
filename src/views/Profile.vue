@@ -77,10 +77,10 @@
                               <input type="button" @click="resetPassword" value="Reset password email" class="btn btn-success w-100">
                           </div>
                         </div>
-                          <a href="#" @click="logout()">
+                          <!-- <a href="#" @click="logout()">
                                 <i class="fa fa-power-off"></i>
                                 <span>Logout</span>
-                            </a>
+                            </a> -->
                       </div>
                   </div>
                 
@@ -214,26 +214,7 @@ export default {
           });
       },
       updateProfile(){
-        // var user = firebase.auth().currentUser
-        // db.collection("profiles").doc(this.profile).update(this.profile)
-        //  this.$firestore.profile.doc(this.profile).update(this.profile.id);
-        
-        //REMINDER nese nuk behen update krejt fields gjun error :)
-      //     firebase.firestore();
-      //     db.collection('profiles').doc(this.profile.id).set({
-      //       name: this.profile.name,
-      //       phone: this.profile.phone,
-      //       address: this.profile.address,
-      //       postcode: this.profile.postcode
-      //     }).then(() => {
-      //       console.log("document updated successfully check firestore")
-      //       Toast.fire({
-      //         icon:'success',
-      //         title: 'Updated successfully'
-      // })
-      //     }).catch((err) => {
-      //       console.log("An error occurred while updateing", + err.message)
-      //     })
+    
           this.$firestore.profile.update(this.profile)
           .then(() => {
              console.log("document updated successfully check firestore")

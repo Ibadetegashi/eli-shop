@@ -19,8 +19,7 @@
 
         </div>
       </div>
-    </div>
-   -->
+    </div> -->
     <login></login>
     <mini-cart></mini-cart>
       <Footer></Footer>
